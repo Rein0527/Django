@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body style="background-color:#FAF7F0;">
+    <form action="" method="Post">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-11">
+                <input class="form-control" name="restaurant_name" placeholder="請輸入餐廳名稱">
+            </div>
+            <div class="form-group col-1">
+                <input class="btn btn-dark" type="submit" value="查詢">
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr bgcolor="#98A8F8">
+                <th></th>
+                <th>作者</th>
+                <th>標題</th>
+                <th>點擊次數</th>
+                <th>來源網站</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr bgcolor="#BCCEF8">
+                <td bgcolor="#BCCEF8"><img src={{ article.link }} style="border-radius: 50%;" /></td>
+                <td bgcolor="#BCCEF8">
+                    {{ article.author }}
+                </td>
+                <td bgcolor="#BCCEF8">
+                    <a href="{{ article.link }}" target="_blank">{{ article.title }}</a>
+                </td>
+                <td bgcolor="#BCCEF8">{{ article.hit }}</td>
+                <td bgcolor="#BCCEF8">{{ article.source }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+{% endblock %}

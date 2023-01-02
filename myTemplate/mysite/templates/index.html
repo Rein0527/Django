@@ -1,0 +1,29 @@
+<!-- index.html (myTemplate) -->
+<!DOCTYPE html>
+
+<html>
+<head><meta charset='utf-8'>
+<title>Home Page</title>
+</head>
+    <body>
+        {% extends 'base.html' %}
+        {% block title %}English News{% endblock %}
+        {% block tvname %} {{tv.name}} {% endblock %}
+        {% block menu %}
+        <ul class='nav navbar-nav'>
+            <li class='active'><a href='/'>Home</a></li>
+            <li><a href='{% url 'tv-url' 0 %}'>幽閉星光</a></li>
+            <li><a href='{% url 'tv-url' 1 %}'>グラブル</a></li>
+            <li><a href='{% url 'tv-url' 2 %}'>World's End</a></li>
+            <li><a href='{% url 'tv-url' 3 %}'>皿ハンド</a></li>
+        </ul>
+    {% endblock %}
+    {% block content %}
+    <div class='container'>
+    <div id='tvcose' align=center>
+    <iframe width="1280" height="720" src="https://www.youtube.com/embed/{{tv.tvcode}}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    <div>
+    <div>
+    {% endblock %}
+</body>
+</html>
